@@ -1,12 +1,13 @@
 # Breaking Free(2986 points)
 
-###Description
+### Description
 
 Our agents managed to obtain the source code from the C2 server that COViD's bots used to register upon infecting its victim. Can you bypass the checks to retrieve more information from the C2 Server?
 
 [Solution TL;DR](#tl;dr)
 
-### Initial Enumeration and Evaluation
+
+Initial Enumeration and Evaluation
 
 We are given just 1 file - [dist.js](./dist.js), which seems to be part of a NodeJS web application. As per the description, this seems to be part of a C2 server's source code. 
 
@@ -109,7 +110,7 @@ async function fetchResource(payload) {
 
 We see a comment that piques our interest in the fetchResource function: `//TODO: fix dev routing at backend http://web_challenge_5_dummy/flag/42`, implying the flag location: we now have a clear goal!
 
-###Time to plan & execute!(Part 1)
+### Time to plan & execute!(Part 1)
 
 We now know that we need to make a POST request, somehow modifying the URL parameter to point to the flag location and supply bot IDs that pass the checks. To do this however, we need to first register our bot ID, but this supposedly requires knowing the environment variable COVID_SECRET! 
 
@@ -122,6 +123,7 @@ Our payload for the first part of the challenge is thus to make a HEAD request, 
 <div align="center">
   <em>Request made using Postman application</em>
 </div>
+
 
 Note the Content-Length header of the response; it indirectly tells us the response of the server even without the actual message body(not given due to the HEAD request). We can get either `{"success":true}`(16 characters) or  `{"success":false}`(17 characters), so getting a Content-Length header 16 indictates success in registering our bot!
 
@@ -136,6 +138,7 @@ Now that our bot is registered, we need to use the changeBotID functionality thr
 <div align="center">
   <em>Note: If you get a {"success":false} here, it may be be that the newBotID value is already registered in the system, so change up the payload slightly.</em>
 </div>
+
 
 The `"covid-bot-data"` part shows the result of the fetchResource function we saw earlier! Now all that is left to do is to overwrite the `"url"` value in the payload object.
 
@@ -152,6 +155,7 @@ The next step is to notice that the spread operator (`{...obj}`)  can in fact [o
 <div align="center">
   <em>Note: Here, I also chose to overwrite the oldBotID variable. While it is completely fine to supply it through the headers and omit it here, I did so for convenience.</em>
 </div>
+
 
 And...oops! The endpoint does not expect a GET parameter. Remember that we are supplying the newBotID as the GET parameter by using `?q=` at the end of our URL. We need to find a new way for the ID to not be included in our path. 
 
