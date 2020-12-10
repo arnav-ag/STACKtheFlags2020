@@ -251,7 +251,7 @@ class Redirect(BaseHTTPRequestHandler):
        self.send_header('Location', 'http://web_challenge_5_dummy/flag/42')
        self.end_headers()
 
-HTTPServer(("", 8080), Redirect).serve_forever()
+HTTPServer(("", PORT), Redirect).serve_forever()
 ```
 
 <img src="./unintendedflag.png" alt="image-20201211003021401" style="zoom: 50%;" />
