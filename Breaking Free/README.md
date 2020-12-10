@@ -120,6 +120,7 @@ Our payload for the first part of the challenge is thus to make a HEAD request, 
 <img src="./HEADreq.png" alt="image-20201210220149491" style="zoom:50%;" />
 <div align="center">
   <em>Request made using Postman application</em>
+  <p> </p>
 </div>
 
 
@@ -133,9 +134,9 @@ Note the Content-Length header of the response; it indirectly tells us the respo
 Now that our bot is registered, we need to use the changeBotID functionality through a POST request. We can make a basic POST request, with the our registered ID as the `x-covid-bot` header and a JSON request body containing our new bot ID (we see `app.use(bodyParser.json())` at the top of dist.js):
 
 <img src="./initialPOST.png" alt="image-20201210221350091" style="zoom:50%;" />
-
 <div align="center">
   <em>Note: If you get a {"success":false} here, it may be be that the newBotID value is already registered in the system, so change up the payload slightly.</em>
+  <p> </p>
 </div>
 
 
@@ -153,6 +154,7 @@ The next step is to notice that the spread operator (`{...obj}`)  can in fact [o
 
 <div align="center">
   <em>Note: Here, I also chose to overwrite the oldBotID variable. While it is completely fine to supply it through the headers and omit it here, I did so for convenience.</em>
+  <p> </p>
 </div>
 
 
