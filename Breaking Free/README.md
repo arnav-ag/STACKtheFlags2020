@@ -177,7 +177,7 @@ This is the part where I explain what I did not knowing that the actual dev endp
 
 I began by enumerating the server used to make the request by overwriting the URL with [RequestBin](https://requestbin.com/):
 
-<img src="/Users/arnav/Documents/CTF/govtech/writeups/Breaking Free/requestbin.png" alt="image-20201210231451233" style="zoom:50%;" />
+<img src="./requestbin.png" alt="image-20201210231451233" style="zoom:50%;" />
 
 The user-agent seemed interesting, and so I went around looking for axios exploits. And lo and behold, we find an extremely recent [SSRF vulnerability](https://snyk.io/vuln/SNYK-JS-AXIOS-1038255), affecting all published versions of this package. Off we go, down this rabbit hole.
 
