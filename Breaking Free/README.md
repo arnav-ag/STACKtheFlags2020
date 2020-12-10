@@ -7,7 +7,7 @@ Our agents managed to obtain the source code from the C2 server that COViD's bot
 [Solution TL;DR](#tl;dr)
 
 
-Initial Enumeration and Evaluation
+### Initial Enumeration and Evaluation
 
 We are given just 1 file - [dist.js](./dist.js), which seems to be part of a NodeJS web application. As per the description, this seems to be part of a C2 server's source code. 
 
