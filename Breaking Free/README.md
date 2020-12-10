@@ -6,7 +6,7 @@
 [Solution TL;DR](#tldr)
 
 
-### Initial Enumeration and Evaluation
+## Initial Enumeration and Evaluation
 
 We are given just 1 file - [dist.js](./dist.js), which seems to be part of a NodeJS web application. As per the description, this seems to be part of a C2 server's source code. 
 
@@ -109,7 +109,7 @@ async function fetchResource(payload) {
 
 We see a comment that piques our interest in the fetchResource function: `//TODO: fix dev routing at backend http://web_challenge_5_dummy/flag/42`, implying the flag location: we now have a clear goal!
 
-### Time to plan & execute!(Part 1)
+## Time to plan & execute!(Part 1)
 
 We now know that we need to make a POST request, somehow modifying the URL parameter to point to the flag location and supply bot IDs that pass the checks. To do this however, we need to first register our bot ID, but this supposedly requires knowing the environment variable COVID_SECRET! 
 
@@ -128,7 +128,7 @@ Note the Content-Length header of the response; it indirectly tells us the respo
 
 *P.S.: We got a Content-Length of 16 for our first few tries, and found out it was because the bot ID was already registered in the system from other teams' prior attempts! If you get this error, try changing the query slightly.*
 
-### Time to plan and execute(Part 2)
+## Time to plan and execute(Part 2)
 
 Now that our bot is registered, we need to use the changeBotID functionality through a POST request. We can make a basic POST request, with the our registered ID as the `x-covid-bot` header and a JSON request body containing our new bot ID (we see `app.use(bodyParser.json())` at the top of dist.js):
 
@@ -141,7 +141,7 @@ Now that our bot is registered, we need to use the changeBotID functionality thr
 
 The `"covid-bot-data"` part shows the result of the fetchResource function we saw earlier! Now all that is left to do is to overwrite the `"url"` value in the payload object.
 
-### The final step
+## The final step
 
 This is where I got stuck. See, the `COVID_BACKEND` variable, set to `web_challenge_5_dummy` did not feel like the actual backend endpoint(SPOILERS: IT WAS) due to the 'dummy' part at the end. This led me down a rabbit hole that I will add at the [end of the report](#taking-the-wrong-pathbut-with-an-unintended-solution) (always good to keep track of the wrong paths too!). For now, we assume that we know that we know that it is in fact the actual value.
 
@@ -164,13 +164,13 @@ Looking at the list of reserved characters for URLs, we come across `#`, which s
 
 Voila! We have the flag: `govtech-csg{ReQu3$t_h34D_0R_G3T?}`
 
-### TL;DR
+## TL;DR
 
 1. Register bot using `HEAD` request instead of `GET` to overcome app.use requirements, while still using app.get route.
 2. Use app.post route to overwrite `payload.url` by exploiting the spread operator. Supply own URL in request body to do so.
 3. Disregard the `payload.newBotID` in the requested URL using anchor tags, get the flag <img src="./pepehands.png" width="5%" />
 
-### Taking the wrong path(but with an unintended solution)
+## Taking the wrong path(but with an unintended solution)
 
 This is the part where I explain what I did not knowing that the actual dev endpoint was `web_challenge_5_dummy`. I began to look into ways I could possibly leak the file that was on the server. I knew this was going to be unlikely, but I decided to give it a try.
 
