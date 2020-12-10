@@ -118,10 +118,10 @@ However, upon some searching about request methods that the GET handler in `expr
 Our payload for the first part of the challenge is thus to make a HEAD request, providing both the `x-covid-bot` header, alongside the query parameter `newID`:
 
 <img src="./HEADreq.png" alt="image-20201210220149491" style="zoom:50%;" />
-
 <div align="center">
   <em>Request made using Postman application</em>
 </div>
+
 
 
 Note the Content-Length header of the response; it indirectly tells us the response of the server even without the actual message body(not given due to the HEAD request). We can get either `{"success":true}`(16 characters) or  `{"success":false}`(17 characters), so getting a Content-Length header 16 indictates success in registering our bot!
