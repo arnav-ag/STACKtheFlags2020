@@ -169,7 +169,7 @@ Voila! We have the flag: `govtech-csg{ReQu3$t_h34D_0R_G3T?}`
 
 1. Register bot using `HEAD` request instead of `GET` to overcome app.use requirements, while still using app.get route.
 2. Use app.post route to overwrite `payload.url` by exploiting the spread operator. Supply own URL in request body to do so.
-3. Disregard the `payload.newBotID` in the requested URL using anchor tags, get the flag <img src="./pepehands.png" style="zoom:5%;" />
+3. Disregard the `payload.newBotID` in the requested URL using anchor tags, get the flag <img src="./pepehands.png" style="zoom:25%;" />
 
 ### Taking the wrong path(but with an unintended solution)
 
