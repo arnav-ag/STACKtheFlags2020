@@ -227,7 +227,9 @@ HTTPServer(("", PORT), Redirect).serve_forever()
 
 I tried this for an hour, even trying filesystem:// URIs and researching the other various [URI schemes](https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml) for a possible attack vector but found none.
 
-![sadge](./sadge.png)
+<div align="center">
+  <img src="./sadge.png"/>
+</div>
 
 
 
