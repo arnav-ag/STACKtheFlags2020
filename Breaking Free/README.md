@@ -1,8 +1,7 @@
 # Breaking Free(2986 points)
 
-### Description
 
-Our agents managed to obtain the source code from the C2 server that COViD's bots used to register upon infecting its victim. Can you bypass the checks to retrieve more information from the C2 Server?
+>Our agents managed to obtain the source code from the C2 server that COViD's bots used to register upon infecting its victim. Can you bypass the checks to retrieve more information from the C2 Server?
 
 [Solution TL;DR](#tldr)
 
