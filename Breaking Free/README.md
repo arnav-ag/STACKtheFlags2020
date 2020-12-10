@@ -44,7 +44,7 @@ router.use("/register-covid-bot", (req, res, next) => {
 Here we see that it checks first whether the request made is GET or otherwise. It then checks based on various conditions whether the request is valid, and if not, it errors out and we are unable to proceed.
 
 - If a GET request is made, the app checks whether a COVD_SECRET parameter is provided and if so, validates it against an environment variable of the same name. 
-- If any other request method is used, the app validates the value of the 'x-covid-bot' header that the user supplies against the given regex. Using a regex testing [website](https://regex101.com/), we can see that it looks for a UUID, but with some additional constraints(3rd segment starts with "4" and 4th part starts with "8","9","a","b","A" or "B")
+- If any other request method is used, the app validates the value of the `x-covid-bot` header that the user supplies against the given regex. Using a regex testing [website](https://regex101.com/), we can see that it looks for a UUID, but with some additional constraints(3rd segment starts with "4" and 4th part starts with "8","9","a","b","A" or "B")
 
 Not knowing the environment variables' values, it is unlikely that a GET request is our attack vector. However, let us further analyse the file to formulate our plan.
 
