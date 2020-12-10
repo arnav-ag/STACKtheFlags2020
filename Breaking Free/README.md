@@ -144,7 +144,7 @@ The `"covid-bot-data"` part shows the result of the fetchResource function we sa
 
 ### The final step
 
-This is where I got stuck. See, the `COVID_BACKEND` variable, set to `web_challenge_5_dummy` did not feel like the actual backend endpoint(SPOILERS: IT WAS) due to the 'dummy' part at the end. This led me down a rabbit hole that I will add at the [end of the report](#taking-the-wrong-path) (always good to keep track of the wrong paths too!). For now, we assume that we know that we know that it is in fact the actual value.
+This is where I got stuck. See, the `COVID_BACKEND` variable, set to `web_challenge_5_dummy` did not feel like the actual backend endpoint(SPOILERS: IT WAS) due to the 'dummy' part at the end. This led me down a rabbit hole that I will add at the [end of the report](#taking-the-wrong-pathbut-with-an-unintended-solution) (always good to keep track of the wrong paths too!). For now, we assume that we know that we know that it is in fact the actual value.
 
 Anyway, now all we have to do is overwrite the `payload.url` value with `"web_challenge_5_dummy/flag/42?q="`, with the last part needed so that the `payload.newBotID` part is no longer included in the path, instead bundled up as a query passed to the dev endpoint.
 
