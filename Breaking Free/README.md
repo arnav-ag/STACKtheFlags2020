@@ -235,7 +235,7 @@ I ultimately just gave up until I decided to try the actual backend URL as a las
 
 
 
-However, after completing the challenge the intended way, I wanted to check if the SSRF attack could be used to also solve the challenge, by redirecting to `http://web_challenge_5_dummy/flag/42` from my server. I present the unintended(albeit harded) solution:
+However, after completing the challenge the intended way, I wanted to check if the SSRF attack could be used to also solve the challenge, by redirecting to `http://web_challenge_5_dummy/flag/42` from my server. I present the unintended(albeit harder to discover) solution:
 
 ```python
 import os
