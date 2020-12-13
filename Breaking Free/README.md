@@ -127,7 +127,7 @@ Our payload for the first part of the challenge is thus to make a HEAD request, 
 
 Note the Content-Length header of the response; it indirectly tells us the response of the server even without the actual message body(not given due to the HEAD request). We can get either `{"success":true}`(16 characters) or  `{"success":false}`(17 characters), so getting a Content-Length header 16 indictates success in registering our bot!
 
-*P.S.: We got a Content-Length of 16 for our first few tries, and found out it was because the bot ID was already registered in the system from other teams' prior attempts! If you get this error, try changing the query slightly.*
+*P.S.: We got a Content-Length of 17 for our first few tries, and found out it was because the bot ID was already registered in the system from other teams' prior attempts! If you get this error, try changing the query slightly.*
 
 ## Time to plan and execute(Part 2)
 
